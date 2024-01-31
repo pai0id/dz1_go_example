@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
-	"time"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
