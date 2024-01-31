@@ -20,7 +20,7 @@ func main() {
 	// Определение флагов программы
 	flag.IntVar(&NMAX, "NMAX", 0, "Максимальный размер массива (обязательный)")
 	flag.IntVar(&NMIN, "NMIN", 0, "Начальный размер массива")
-	flag.StringVar(&finPath, "fin", "", "Путь к файлу с сценарием работы с массивом")
+	flag.StringVar(&finPath, "fin", "", "Путь к файлу со сценарием работы с массивом")
 	flag.StringVar(&foutPath, "fout", "", "Путь к файлу для записи действий пользователя")
 
 	flag.Parse()
@@ -44,6 +44,10 @@ func main() {
 	// Инициализация массива в соответствии с начальным размером
 	var array []int
 	if NMIN > 0 {
+		if NMIN >= NMAX {
+			fmt.Println("NMIN не может быть >= NMAX")
+			return
+		}
 		rand.Seed(time.Now().UnixNano())
 		array = rand.Perm(NMIN)
 		printArray(array)
