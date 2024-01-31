@@ -10,7 +10,7 @@ package main
  * @return Новый массив, содержащий все элементы из исходного массива и добавленный элемент.
  */
 func addElement(array []int, elem int) []int {
-	return append(array, elem)
+	// Код тут
 }
 
 /**
@@ -24,10 +24,7 @@ func addElement(array []int, elem int) []int {
  *         Если массив пуст, возвращается оригинальный пустой массив.
  */
 func removeElement(array []int) []int {
-	if len(array) > 0 {
-		return array[:len(array)-1]
-	}
-	return array
+	// Код тут
 }
 
 /**
@@ -39,8 +36,5 @@ func removeElement(array []int) []int {
  * @return Новый массив, содержащий элементы из исходного массива, увеличенные на единицу.
  */
 func addOneToArray(array []int) []int {
-	for i := range array {
-		array[i]++
-	}
-	return array
+	// Код тут
 }
