@@ -10,7 +10,7 @@
 
 ## Задание
 1. Создайте собственную ветку `"dz1"`, отведенную от ветки с названием `"master"`.
-2. Реализуйте функции addElement, removeElement и addOneToArray в файле `"funcs/funcs.go"`
+2. Реализуйте функции addElement, removeElement и addOneToArray в файле `"funcs.go"`
 
 Программа работает с массивом:
 

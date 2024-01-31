@@ -12,24 +12,6 @@ import (
 	"strings"
 )
 
-func addElement(array []int, elem int) []int {
-	return append(array, elem)
-}
-
-func removeElement(array []int) []int {
-	if len(array) > 0 {
-		return array[:len(array)-1]
-	}
-	return array
-}
-
-func addOneToArray(array []int) []int {
-	for i := range array {
-		array[i]++
-	}
-	return array
-}
-
 func main() {
 	var NMAX, NMIN int
 	var finPath, foutPath string
@@ -43,6 +25,11 @@ func main() {
 
 	if NMAX == 0 {
 		fmt.Println("Необходимо задать обязательный флаг -NMAX")
+		return
+	}
+
+	if NMAX < 0 {
+		fmt.Println("NMAX не может быть меньше нуля")
 		return
 	}
 
@@ -75,7 +62,7 @@ func main() {
 	if finPath != "" {
 		file, err := os.Open(finPath)
 		if err != nil {
-			fmt.Println("Ошибка при открытии файла с сценарием:", err)
+			fmt.Println("Ошибка при открытии файла со сценарием:", err)
 			return
 		}
 		defer file.Close()
@@ -87,7 +74,7 @@ func main() {
 		}
 
 		if err := scanner.Err(); err != nil {
-			fmt.Println("Ошибка при чтении файла с сценарием:", err)
+			fmt.Println("Ошибка при чтении файла со сценарием:", err)
 			return
 		}
 	}
