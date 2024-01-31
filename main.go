@@ -13,9 +13,11 @@ import (
 )
 
 func main() {
+	// Объявление переменных для флагов
 	var NMAX, NMIN int
 	var finPath, foutPath string
 
+	// Определение флагов программы
 	flag.IntVar(&NMAX, "NMAX", 0, "Максимальный размер массива (обязательный)")
 	flag.IntVar(&NMIN, "NMIN", 0, "Начальный размер массива")
 	flag.StringVar(&finPath, "fin", "", "Путь к файлу с сценарием работы с массивом")
@@ -23,6 +25,7 @@ func main() {
 
 	flag.Parse()
 
+	// Проверки корректности введенных данных
 	if NMAX == 0 {
 		fmt.Println("Необходимо задать обязательный флаг -NMAX")
 		return
@@ -38,6 +41,7 @@ func main() {
 		return
 	}
 
+	// Инициализация массива в соответствии с начальным размером
 	var array []int
 	if NMIN > 0 {
 		rand.Seed(time.Now().UnixNano())
@@ -48,6 +52,7 @@ func main() {
 		return
 	}
 
+	// Открытие файла для записи действий пользователя, если указан
 	var fout *os.File
 	if foutPath != "" {
 		var err error
@@ -59,6 +64,7 @@ func main() {
 		defer fout.Close()
 	}
 
+	// Обработка сценария из файла, если указан
 	if finPath != "" {
 		file, err := os.Open(finPath)
 		if err != nil {
@@ -79,6 +85,7 @@ func main() {
 		}
 	}
 
+	// Бесконечный цикл взаимодействия с пользователем
 	for {
 		fmt.Println("\nМеню:")
 		fmt.Println("1 - Добавить элемент")
@@ -119,16 +126,19 @@ func main() {
 	}
 }
 
+// Вспомогательная функция для вывода массива на экран
 func printArray(array []int) {
 	fmt.Println("Текущий массив:", array)
 }
 
+// Вспомогательная функция для записи строки в файл
 func writeToFile(file *os.File, str string) {
 	if file != nil {
 		file.WriteString(str)
 	}
 }
 
+// Вспомогательная функция для обработки команды из файла
 func processCommand(command string, array *[]int) {
 	var validAddElement = regexp.MustCompile(`addElement [0-9]+`)
 
